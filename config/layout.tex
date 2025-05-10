@@ -1,0 +1,37 @@
+% Page geometry
+\geometry{
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2cm,
+    right=2cm,
+    headheight=2.5cm,
+    head=1.25cm,
+    foot=1.25cm
+}
+
+% Headers and footers
+\fancypagestyle{mainmatter}{
+    \fancyhf{} % Clear all header and footer fields
+    \fancyhead[L]{\leftmark} % Chapter number and name in left header
+    \fancyfoot[R]{\bfseries\thepage}   % Page number in right footer
+    \renewcommand{\headrulewidth}{0.1mm} % Header rule for all pages except first chapter page
+}
+
+\fancypagestyle{chapter-first-page}{
+    \fancyhf{} % Clear header/footer
+    \fancyfoot[R]{\bfseries\thepage}
+    \renewcommand{\headrulewidth}{0mm} % No header rule for first page of chapter
+}
+
+\makeatletter
+\let\old@chapter\@chapter%
+\def\@chapter[#1]#2{\old@chapter[#1]{#2}\thispagestyle{chapter-first-page}}
+\let\old@schapter\@schapter%
+\def\@schapter#1{\old@schapter{#1}\thispagestyle{chapter-first-page}}
+\makeatother
+
+\fancypagestyle{plain}{
+    \fancyhf{} % Clear all header/footer fields
+    \fancyfoot[R]{\thepage} % Page number at right footer
+    \renewcommand{\headrulewidth}{0pt} % No header rule
+}

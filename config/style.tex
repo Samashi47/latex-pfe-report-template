@@ -1,0 +1,25 @@
+% Chapter styling
+\titleformat{\chapter}[frame]
+    {\normalfont}
+    {\filright%
+    \footnotesize\scshape
+    \enspace{}CHAPTER \thechapter\enspace{}}
+    {8pt}
+    {\Huge\bfseries\filcenter}
+    [\vspace{-5pt}\vspace{5pt}]
+
+\titleformat{name=\chapter,numberless}
+    {\normalfont\Huge\bfseries}
+    {}
+    {0pt}
+    {\filcenter}
+    [\vspace{5pt}\titlerule]
+    
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+
+% Numbering style
+\renewcommand\thechapter{\Roman{chapter}}
+\renewcommand\thesection{\thechapter.\arabic{section}}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
+\setcounter{secnumdepth}{4}
