@@ -1,0 +1,107 @@
+\begin{titlepage}
+    \newgeometry{
+        top=1cm,
+        bottom=1cm,
+        left=2cm,
+        right=2cm,
+    }
+    \centering
+    
+    % --- Top Logos ---
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=2.5cm,width=6cm]{example-image-a} % Logo of the university
+    \end{minipage}%
+    \hfill
+    \begin{minipage}[t]{0.45\textwidth}
+        \centering
+        \includegraphics[height=2.5cm,width=6cm]{example-image-b} % Logo of the institution
+    \end{minipage}
+
+    \vspace{0.1cm}
+
+    % --- Degree Information ---
+    \begin{center}
+        \rule{0.5\textwidth}{1pt}\\[0.2cm]
+        {\fontsize{16}{18}\selectfont\bfseries END OF STUDIES PROJECT\par}
+        \rule{0.5\textwidth}{1pt}
+    \end{center}
+
+    \vspace{0.1cm}
+    
+    {\large\itshape Presented to obtain the degree of:\par}
+    \vspace{0.1cm}
+    {\Large\bfseries [The degree]\\
+    \vspace{0.1cm}
+    Major: [Your major here]\par}
+
+    \vspace{0.3cm}
+
+    % --- Project Title ---
+    \begin{center}
+        \begin{tcolorbox}[
+            enhanced,
+            colback=white,
+            colframe=black!80,
+            arc=3mm,
+            boxrule=1pt,
+            width=0.85\textwidth,
+            halign=center,
+            valign=center,
+            fontupper=\fontsize{20}{24}\selectfont\bfseries,
+            drop shadow,
+            top=8pt,
+            bottom=8pt,
+            left=10pt,
+            right=10pt
+        ]
+        \textcolor{black!90}{[Project Title]\\}
+        \vspace{2pt}
+        \fontsize{16}{20}\selectfont\textcolor{black!80}{[Subtitle of the Project]}
+        \end{tcolorbox}
+    \end{center}
+
+    \vspace{0.2cm}
+
+    % --- Author Information ---
+    \rule{0.5\textwidth}{1pt}\\[0.1cm]
+    {\large\itshape Presented by:\par}
+    \vspace{0.1cm}
+    {\Large\bfseries [Full Name]\par}
+    \rule{0.5\textwidth}{1pt}
+    
+    \vspace{0.7cm}
+    
+    % --- Jury Information ---
+    {\large\itshape Defended on DD/MM/YYYY before the jury:\par}
+    \vspace{0.2cm}
+    \noindent
+    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}X>{\raggedleft\arraybackslash}l}
+        \toprule
+        \textbf{Name} & \textbf{Affiliation} & \textbf{Role} \\
+        \midrule
+        Jury Member Name 1 & Affiliation & Jury President \\
+        Jury Member Name 2 & Affiliation & Examiner \\
+        Jury Member Name 3 & Affiliation & Examiner \\
+        Jury Member Name 4 & Affiliation & Academic Supervisor \\
+        Jury Member Name 5 & Affiliation & Professional Supervisor \\
+        \bottomrule
+    \end{tabularx}
+
+    \vspace{1cm}
+
+    % --- Internship Company ---
+    {\large\itshape Internship completed at:\par}
+    \vspace{0.2cm}
+    \includegraphics[height=2.5cm,width=6cm]{example-image-c} % Logo of the company
+
+    \vfill
+
+    % --- Academic Year ---
+    \begin{center}
+        \rule{0.5\textwidth}{1pt}\\[0.1cm]
+        {\large\bfseries\itshape Academic Year: 20YY/20YY\par}
+    \end{center}
+    
+    \restoregeometry
+\end{titlepage}
