@@ -1,6 +1,14 @@
-\newpage
-\addcontentsline{toc}{chapter}{Appendices}
 \chapter*{Appendices}
-\addcontentsline{toc}{section}{Appendix A: Additional Information}
-\section*{Appendix A: Additional Information}
-\lipsum[1-4]
+\addcontentsline{toc}{chapter}{Appendices}
+\appendix
+\renewcommand{\thesection}{\Alph{section}}
+\setcounter{section}{0}
+\section{Additional Information}
+\lipsum[1]
+\section{Supplementary Data}
+\lipsum[2]
+\begin{lstlisting}[language=Python, caption={Sample Python Code}, label={lst:sample-python}]
+def sample_function():
+    print("This is a sample function.")
+sample_function()
+\end{lstlisting}

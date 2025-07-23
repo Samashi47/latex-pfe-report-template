@@ -1,3 +1,4 @@
+% chktex-file 1
 % Chapter styling
 \titleformat{\chapter}[frame]
     {\normalfont}
@@ -16,6 +17,9 @@
     [\vspace{5pt}\titlerule]
     
 \titlespacing*{\chapter}{0pt}{50pt}{40pt}
+\titlespacing*{name=\chapter,numberless}{0pt}{20pt}{40pt}
+\crefname{figure}{figure}{figures}
+\Crefname{figure}{Figure}{Figures}
 
 % Numbering style
 \renewcommand\thechapter{\Roman{chapter}}
@@ -23,3 +27,96 @@
 \renewcommand\thesubsection{\thesection.\arabic{subsection}}
 \renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}}
 \setcounter{secnumdepth}{4}
+\setcitestyle{numbers}
+
+\usetikzlibrary{shadows, positioning}
+
+\setlength{\parskip}{0.15cm}
+\definecolor{phaseblue}{HTML}{5B9BD5}
+
+\tracinglostchars=0
+
+\makeatletter
+\newcommand{\blacklistlinks}{\hypersetup{linkcolor=black}}
+\newcommand{\bluelistlinks}{\hypersetup{linkcolor=blue}}
+
+\pretocmd{\tableofcontents}{\blacklistlinks}{}{}
+\apptocmd{\tableofcontents}{\bluelistlinks}{}{}
+
+\pretocmd{\listoffigures}{\blacklistlinks}{}{}
+\apptocmd{\listoffigures}{\bluelistlinks}{}{}
+
+\pretocmd{\listoftables}{\blacklistlinks}{}{}
+\apptocmd{\listoftables}{\bluelistlinks}{}{}
+\makeatother
+
+\makeatletter
+\tikzset{phantom node/.code=\tikz@addoption{\expandafter\let\csname pgf@sh@boxes@\tikz@shape\endcsname\pgfutil@empty}}
+\makeatother
+\tikzset{
+  shadowed node xshift/.initial=1.5ex, shadowed node yshift/.initial=1ex, shadowed node list/.initial={2, 1},
+  pics/shadowed node/.default=\pgfkeysvalueof{/tikz/shadowed node list},
+  shadowed node/.pic={
+    \foreach[expand list] \elem in {#1}
+      \scoped[transparency group, shadowed node calculation={\elem}]
+        \node[style/.expand once=\tikzpictextoptions, phantom node,
+              xshift={\elem*\pgfkeysvalueof{/tikz/shadowed node xshift}},
+              yshift={\elem*\pgfkeysvalueof{/tikz/shadowed node yshift}}] (-\elem) {\tikzpictext};
+    \node[alias=-0, style/.expand once=\tikzpictextoptions] () {\tikzpictext};},
+  set shadowed node calculation parameter/.style={shadowed node calculation/.style={opacity={(#1-##1+1)/ (#1+1)}}},
+  set shadowed node calculation parameter=2,
+  overshoot line to/.style={to path={($(\tikztostart)!-(#1)!(\tikztotarget)$)-- ($(\tikztotarget)!-(#1)!(\tikztostart)$)\tikztonodes}},
+  edges have transparency group/.style={execute at begin to={\scope[transparency group,#1]}, execute at end to=\endscope}}
+
+
+
+\definecolor{pybg}{HTML}{F7F7F7}
+\definecolor{pyframe}{HTML}{CCCCCC}
+\definecolor{pykeyword}{HTML}{005CC5}
+\definecolor{pystring}{HTML}{22863A}
+\definecolor{pycomment}{HTML}{6A737D}
+\definecolor{pyidentifier}{HTML}{24292F}
+\definecolor{pybuiltin}{HTML}{E36209}
+
+\lstset{aboveskip=0.8cm}
+
+\lstdefinestyle{sprucedpython}{
+  language=Python,
+  backgroundcolor=\color{pybg},
+  frame=single,
+  rulecolor=\color{pyframe},
+  basicstyle=\ttfamily\small\color{pyidentifier},
+  keywordstyle=\bfseries\color{pykeyword},
+  stringstyle=\color{pystring},
+  commentstyle=\itshape\color{pycomment},
+  numberstyle=\tiny\color{pyframe},
+  numbers=none,
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  tabsize=4,
+  breaklines=true,
+  breakatwhitespace=true,
+  emph={self},
+  emphstyle=\color{pybuiltin},
+  morekeywords={as,assert,async,await,with,yield,from,nonlocal,global,lambda},
+  captionpos=b
+}
+
+\lstset{style=sprucedpython}
+
+\makeatletter
+\renewcommand*\l@figure[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \setlength\@tempdima{3em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \normalfont
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      #1\nobreak\hfil \nobreak\hb@xt@\@pnumwidth{\hss #2}\par
+    \endgroup
+  \fi}
+\makeatother

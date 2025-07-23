@@ -1,4 +1,4 @@
-\documentclass[12pt,BCOR=0.5cm]{report}
+\documentclass[12pt]{report}
 
 \input{config/packages}
 \input{config/layout}
@@ -7,33 +7,23 @@
 \begin{document}
 
 % Title page (no page number)
-\pagestyle{empty}
-\pagenumbering{gobble}
 \include{frontmatter/titlepage}
-
-\cleardoublepage%
-\thispagestyle{empty}
-\null%
-\newpage
 
 % % Front matter with page numbers
 \cleardoublepage%
-\pagestyle{plain}
 \pagenumbering{roman}
+\pagestyle{mainmatter}
 \include{frontmatter/dedication}
 \include{frontmatter/acknowledgements}
-\include{frontmatter/preface}
 
 % Table of contents and lists
 \renewcommand{\contentsname}{Table of Contents}
 \tableofcontents
-\include{frontmatter/abstract}
 \include{frontmatter/résumé}
+\include{frontmatter/abstract}
 \include{frontmatter/abbreviations-acronyms}
 \listoffigures{}
-\addcontentsline{toc}{chapter}{\listfigurename}
 \listoftables{}
-\addcontentsline{toc}{chapter}{\listtablename}
 
 % Main matter
 \include{frontmatter/general-introduction}
@@ -45,10 +35,12 @@
 \include{backmatter/conclusion}
 
 % Bibliography
-\cleardoublepage
-\addcontentsline{toc}{chapter}{Bibliography}
+\phantomsection%
+\addcontentsline{toc}{chapter}{References}
+\renewcommand{\bibname}{References}
 \bibliographystyle{plainnat}
 \bibliography{References}
+
 % Appendices
 \include{backmatter/appendices}
 

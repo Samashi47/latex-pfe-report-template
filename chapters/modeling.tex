@@ -1,5 +1,130 @@
 \newpage
 \chapter{Modeling}
 \section{Introduction}
-\lipsum[1-4]
-This is another citation test \citep{placeholder}.
+\lipsum[1]
+\section{Use Case Diagram}
+\lipsum[2-3]
+
+\begin{figure}[H]
+    \centering
+    \begin{adjustbox}{width=\textwidth, keepaspectratio}
+        \begin{tikzpicture}
+            \begin{umlsystem}[x=4, fill=red!10]{The system}
+                \umlusecase{use case1}
+                \umlusecase[y=-2]{use case2}
+                \umlusecase[y=-4]{use case3}
+                \umlusecase[x=4, y=-2, width=1.5cm]{use case4 on 2 lines}
+                \umlusecase[x=6, fill=green!20]{use case5}
+                \umlusecase[x=6, y=-4]{use case6}
+            \end{umlsystem}
+
+            \umlactor{user}
+            \umlactor[y=-3]{subuser}
+            \umlactor[x=14, y=-1.5]{admin}
+
+            \umlinherit{subuser}{user}
+            \umlassoc{user}{usecase-1}
+            \umlassoc{subuser}{usecase-2}
+            \umlassoc{subuser}{usecase-3}
+            \umlassoc{admin}{usecase-5}
+            \umlassoc{admin}{usecase-6}
+            \umlinherit{usecase-2}{usecase-1}
+            \umlVHextend{usecase-5}{usecase-4}
+            \umlinclude[name=incl]{usecase-3}{usecase-4}
+
+            \umlnote[x=7, y=-7]{incl-1}{note on include dependency}
+        \end{tikzpicture}
+    \end{adjustbox}
+    \caption{Use Cases Diagram}\label{fig:use-cases}
+\end{figure}
+
+\section{Class Diagram}
+\lipsum[4-5]
+
+\begin{figure}[H]
+    \centering
+    \begin{adjustbox}{width=0.8\textwidth, keepaspectratio}
+        \begin{tikzpicture}
+            \begin{umlpackage}{p}
+            \begin{umlpackage}{sp1}
+            \umlclass[template=T]{A}{
+            n : uint \\ t : float
+            }{}
+            \umlclass[y=-3]{B}{
+            d : double
+            }{
+            \umlvirt{setB(b : B) : void} \\ getB() : B}
+            \end{umlpackage}
+            \begin{umlpackage}[x=10,y=-6]{sp2}
+            \umlinterface{C}{
+            n : uint \\ s : string
+            }{}
+            \end{umlpackage}
+            \umlclass[x=2,y=-10]{D}{
+            n : uint
+            }{}
+            \end{umlpackage}
+
+            \umlassoc[geometry=-|-, arg1=tata, mult1=*, pos1=0.3, arg2=toto, mult2=1, pos2=2.9, align2=left]{C}{B}
+            \umlunicompo[geometry=-|, arg=titi, mult=*, pos=1.7, stereo=vector]{D}{C}
+            \umlimport[geometry=|-, anchors=90 and 50, name=import]{sp2}{sp1}
+            \umlassoc[arg=tutu, mult=1, pos=0.8, recursive=30|60|2cm]{D}{D}
+            \umlinherit[geometry=-|]{D}{B}
+            \umlnote[x=2.5,y=-6, width=3cm]{B}{Je suis une note qui concerne la classe B}
+            \umlnote[x=7.5,y=-2]{import-2}{Je suis une note qui concerne la relation d'import}
+        \end{tikzpicture}
+    \end{adjustbox}
+    \caption{Class Diagram}\label{fig:class-diagram}
+\end{figure}
+
+\section{Sequence Diagram}
+\lipsum[6]
+
+\begin{figure}[H]
+    \centering
+    \begin{adjustbox}{width=0.8\textwidth, keepaspectratio}
+        \begin{tikzpicture}
+            \begin{umlseqdiag}
+                \umlactor[class=A]{a}
+                \umldatabase[class=B, fill=blue!20]{b}
+                \umlmulti[class=C]{c}
+                \umlobject[class=D]{d}
+                \begin{umlcall}[op=opa(), type=synchron, return=0]{a}{b}
+                \begin{umlfragment}
+                \begin{umlcall}[op=opb(), type=synchron, return=1]{b}{c}
+                \begin{umlfragment}[type=alt, label=condition, inner xsep=8, fill=green!10]
+                \begin{umlcall}[op=opc(), type=asynchron, fill=red!10]{c}{d}
+                \end{umlcall}
+                \begin{umlcall}[type=return]{c}{b}
+                \end{umlcall}
+                \umlfpart[default]
+                \begin{umlcall}[op=opd(), type=synchron, return=3]{c}{d}
+                \end{umlcall}
+                \end{umlfragment}
+                \end{umlcall}
+                \end{umlfragment}
+                \begin{umlfragment}
+                \begin{umlcallself}[op=ope(), type=synchron, return=4]{b}
+                \begin{umlfragment}[type=assert]
+                \begin{umlcall}[op=opf(), type=synchron, return=5]{b}{c}
+                \end{umlcall}
+                \end{umlfragment}
+                \end{umlcallself}
+                \end{umlfragment}
+                \end{umlcall}
+                \umlcreatecall[class=E, x=8]{a}{e}
+                \begin{umlfragment}
+                \begin{umlcall}[op=opg(), name=test, type=synchron, return=6, dt=7, fill=red!10]{a}{e}
+                \umlcreatecall[class=F, stereo=boundary, x=12]{e}{f}
+                \end{umlcall}
+                \begin{umlcall}[op=oph(), type=synchron, return=7]{a}{e}
+                \end{umlcall}
+                \end{umlfragment}
+            \end{umlseqdiag}
+        \end{tikzpicture}
+    \end{adjustbox}
+    \caption{Sequence Diagram}\label{fig:sequence-diagram}
+\end{figure}
+
+\section{Conclusion}
+\lipsum[7][1-15]

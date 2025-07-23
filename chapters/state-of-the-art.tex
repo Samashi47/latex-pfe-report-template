@@ -1,5 +1,39 @@
 \newpage
 \chapter{State of the Art}
 \section{Introduction}
-\lipsum[1-4]
-~\cite{placeholder}
+\lipsum[1]
+\section{Related Work}
+\lipsum[2] \citep{placeholder}
+\section{Technological Background}
+\lipsum[3] \citep{placeholder}
+\section{Current Trends}
+\lipsum[4] \Cref{tab:dummy_table} \lipsum[5][1-4]
+
+\begin{table}[H]
+    \centering
+    \setlength{\tabcolsep}{4pt}
+    \renewcommand{\arraystretch}{1.1}
+    \begin{tabularx}{\textwidth}{c c c X}
+        \toprule
+        \textbf{Category} & \textbf{Value} & \textbf{Amount} & \textbf{Description} \\
+        \midrule
+        Alpha & 100 & 10X & Example note A \\
+        \midrule
+        Beta & 200 & 20X & Example note B \\
+        \midrule
+        Gamma & 300 & 30X & Example note C \\
+        \midrule
+        Delta & 400 & 40X & Example note D \\
+        \midrule
+        Epsilon & 500 & 50X & Example note E \\
+        \midrule
+        Zeta & 600 & 60X & Example note F \\
+        \midrule
+        Eta & 700 & 70X & Example note G \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Dummy Table}\label{tab:dummy_table}
+\end{table}
+
+\section{Conclusion}
+\lipsum[5]

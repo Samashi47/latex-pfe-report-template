@@ -1,38 +1,93 @@
-% Basic document setup
-\usepackage{miama}
+% -------------------------------------------------
+% Encoding and Language
+% -------------------------------------------------
 \usepackage[T1]{fontenc}                % Font encoding
 \usepackage[utf8]{inputenc}             % Input encoding
-\usepackage[english]{babel}      % Language with Arabic support
+\usepackage[english]{babel}             % Language
+\let\CheckCommand\providecommand%
+\usepackage{microtype}                  % Hyphenation
+
+% -------------------------------------------------
+% Fonts and Typography
+% -------------------------------------------------
+\usepackage{lettrine}
+\usepackage{lmodern}
+\usepackage{miama}
+\usepackage{calligra}
+
+% -------------------------------------------------
+% Page Layout and Formatting
+% -------------------------------------------------
 \usepackage{geometry}                   % Page layout
+\usepackage{setspace}                   % Line spacing
+\usepackage{indentfirst}                % Indent first paragraph
+\usepackage{titlesec}                   % Section formatting
+\usepackage{calc}                       % Length calculations
+\usepackage{adjustbox}                  % Adjust boxes
+\usepackage{rotating}                   % Rotating objects
+\usepackage{subcaption}                 % Subfigures and subcaptions
 
-% Mathematics
-\usepackage{amsmath,amsthm,amssymb}     % All math needs
+% -------------------------------------------------
+% Headers and Footers
+% -------------------------------------------------
+\usepackage{fancyhdr}                   % Headers/footers
 
+% -------------------------------------------------
 % Tables
+% -------------------------------------------------
 \usepackage{array}                      % Base table functionality
 \usepackage{tabularx}                   % Extended tables
 \usepackage{booktabs}                   % Professional tables
 
-% Graphics and colors
+% -------------------------------------------------
+% Code and Listings
+% -------------------------------------------------
+\usepackage{listings}
+
+% -------------------------------------------------
+% Colors
+% -------------------------------------------------
+\usepackage[dvipsnames, table]{xcolor}              % Colors (tables)
+
+% -------------------------------------------------
+% Graphics and Drawing
+% -------------------------------------------------
 \usepackage{graphicx}                   % Images
-\usepackage[table]{xcolor}              % Colors (replaces color and colortbl)
-\usepackage[many]{tcolorbox}
-
-% Text formatting
+\usepackage{tikz-uml}
+% -------------------------------------------------
+% Boxes and Alignment
+% -------------------------------------------------
+\usepackage[many]{tcolorbox}            % Colored/text boxes
 \usepackage{ragged2e}                   % Text alignment
-\usepackage{titlesec}                   % Section formatting
-\usepackage{calc}                       % Length calculations
 
-% Page styling
-\usepackage{fancyhdr}                   % Headers/footers
+% -------------------------------------------------
+% Floating Objects
+% -------------------------------------------------
+\usepackage{float}                      % Improved float control
 
-% Content
-\usepackage{lipsum}                     % Lorem ipsum (removing blindtext)
-\usepackage{acronym}                    % Acronyms
-\usepackage[sort, numbers]{natbib}      % Citations - add this line
-
-% Always load hyperref near the end
+% -------------------------------------------------
+% Citations and References
+% -------------------------------------------------
+\usepackage[sort, numbers]{natbib}      % Citations
 \usepackage[colorlinks=true,
-            linkcolor=black,
-            urlcolor=black,
-            citecolor=black]{hyperref}
+            linkcolor=blue,
+            urlcolor=blue,
+            citecolor=black,
+            anchorcolor=blue,
+            breaklinks=true]{hyperref}
+\usepackage[nameinlink]{cleveref}
+
+% -------------------------------------------------
+% Acronyms
+% -------------------------------------------------
+\usepackage[nohyperlinks]{acronym}      % Acronyms
+
+% -------------------------------------------------
+% Utilities
+% -------------------------------------------------
+\usepackage{etoolbox}                   % Programming tools
+
+% -------------------------------------------------
+% Dummy text
+% -------------------------------------------------
+\usepackage{lipsum}                     % Dummy text
